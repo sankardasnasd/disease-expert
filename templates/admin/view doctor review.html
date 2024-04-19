@@ -1,0 +1,42 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/view_feedback_post/">
+{% csrf_token %}
+{% comment %} <table class="pull-left">
+  <tr>
+    <td>From date</td>
+    <td>
+    <input type="date" class="form-control"required name="textfield" id="textfield" /></td>
+    <td>To date</td>
+    <td><input type="date" class="form-control"required name="textfield2" id="textfield2" /></td>
+    <td>
+      <input type="submit" name="button" id="button" value="Search"class="btn btn-info" />
+    </td>
+  </tr>
+</table> {% endcomment %}
+<br>
+<br>
+<table class="table table-bordered table-striped ">
+  <tr>
+    <th>SI No</th>
+    <th>User name</th>
+    <th>Feedback</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}&nbsp;</td>
+    <td>{{ i.USERNAME.name }}&nbsp;</td>
+    <td>{{ i.feeedback}}</td>
+    <td>{{ i.date }}&nbsp;</td>
+    <td>{{ i.time }}&nbsp;</td>
+  </tr>
+    {% endfor %}
+</table>
+<p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

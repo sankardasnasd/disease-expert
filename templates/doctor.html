@@ -1,0 +1,180 @@
+{% include 'public_header.html'%}
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+    <div class="login-container">
+
+<form id="form1" name="form1"enctype="multipart/form-data" method="post" action="/myapp/doctor_post/">
+    {% csrf_token %}
+
+<table class="table table-bordered ">
+  <tr>
+    <td>Name</td>
+    <td>
+      <input type="text" class="form-control"required name="textfield2" id="textfield2" pattern="^[A-Za-z]+(?:\s[A-Za-z]+)?$" />
+    </td>
+  </tr>
+  <tr>
+    <td>Place</td>
+    <td>
+      <input type="text" class="form-control"required name="textfield" id="textfield" />
+    </td>
+  </tr>
+  <tr>
+    <td>Age</td>
+    <td>
+      <input type="number" min="18" class="form-control"required name="textfield3" id="textfield3" />
+   </td>
+  </tr>
+    <tr>
+    <td>Email</td>
+    <td>
+      <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="form-control"required name="textfield10" id="textfield3" />
+   </td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td><p>
+        <label>
+          <input type="radio" checked name="RadioGroup1" value="Male" id="RadioGroup1_0" />
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Female" id="RadioGroup1_1" />
+          Female</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Other" id="RadioGroup1_2" />
+          Other</label>
+        <br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>
+      <input type="text"class="form-control"required pattern="[A-Za-z][A-Za-z. ]*" name="textfield4" id="textfield4" />
+  </td>
+  </tr>
+  <tr>
+    <td>Pin</td>
+    <td>
+      <input type="text"class="form-control"required pattern="[1-9][0-9]+" minlength="5" maxlength="6" name="textfield5" id="textfield5" />
+    </td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield6" id="textfield6" />
+    </td>
+  </tr>
+  <tr>
+    <td>House No.</td>
+    <td>
+      <input type="text" class="form-control" required name="textfield7" id="textfield7" />
+    </td>
+  </tr>
+  <tr>
+    <td>House name</td>
+    <td>
+      <input type="text" class="form-control"required name="textfield8" id="textfield8" />
+  </td>
+  </tr>
+  <tr>
+    <td>Mobile No.</td>
+    <td>
+      <input type="text" class="form-control"required name="textfield9" pattern="[6-9][0-9]+" minlength="10" maxlength="10" id="textfield9" />
+    </td>
+  </tr>
+  <tr>
+    <td height="39">Photo</td>
+    <td>
+      <input type="file" class="form-control" required name="fileField" id="fileField" />
+   </td>
+  </tr>
+    <tr><td>password</td>
+        <td><input type="password" class="form-control"required id="password" name="password"></td>
+    </tr>
+    <tr>
+        <td>confirm password</td>
+        <td><input type="password" class="form-control"required id="confirmPassword" name="comfirmpassword"></td>
+
+</tr>
+  <tr>
+    <td colspan="2">
+      
+        <div align="center">
+          <input type="submit" name="button" id="button" disabled value="ADD" CLASS="btn btn-info"/>
+        </div>
+    </td>
+  </tr>
+</table>
+</form>
+         </div>
+</center>
+
+<style>
+    .login-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        padding: 20px;
+    }
+
+    .login-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .login-form button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .forgot-password-link {
+        margin-top: 10px;
+    }
+
+    .rounded-image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#confirmPassword').on('input', function () {
+      var password = $('#password').val();
+      var confirmPassword = $(this).val();
+      $('#button').prop('disabled', password !== confirmPassword);
+    });
+  });
+</script>
+
+{% include 'public_footer.html'%}

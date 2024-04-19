@@ -1,0 +1,38 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<body><form  enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+<table class="table table-bordered table-striped">
+<tr>
+      <td width="213">Symptoms</td>
+      <td width="381"><input type="text" name="textfield" class="form-control" required pattern="[A-Z a-z .]{2,25}"/></td>
+    </tr>
+
+    <tr>
+      <td>Disease</td>
+      <td>
+<select name="disease" class="form-control">
+  {% for i in data %}
+  <option value="{{ i.id }}">{{ i.dieasename }}</option>
+  {%endfor%}
+</select>
+
+      </td>
+    </tr>
+  {% comment %} <tr>
+    <td>Description</td>
+    <td><textarea name="textarea"class="form-control" minlength="10" required id="textarea" cols="45" rows="5"></textarea></td>
+  </tr> {% endcomment %}
+{#  <tr>#}
+{#    <td>Symptoms</td>#}
+{#    <td><input type="text"class="form-control" minlength="10" required name="textfield2" id="textfield2" /></td>#}
+{#  </tr>#}
+
+  <tr>
+    <td colspan="2" align="center"><input type="submit" name="submit" id="button" value="ADD"class="btn btn-info" /></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

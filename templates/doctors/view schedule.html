@@ -1,0 +1,50 @@
+{% extends 'doctors/doctor index.html' %}
+{% block body %}
+<body><form action="/myapp/view_schedule_post/" method="post">
+{% csrf_token %}
+<table class="pull-left">
+  <tr>
+    <td>From Date</td>
+    <td>
+        <input type="date" required name="textfield" id="textfield" list="datas" class="form-control"/>
+        <datalist id="datas">
+            {% for i in data %}
+                <option>{{ i.date|date:'Y-m-d' }}</option>
+            {% endfor %}
+
+        </datalist>
+    </td>
+    <td>To date</td>
+    <td>
+        <input type="date" required name="textfield2" list="datas" id="textfield2" class="form-control" />
+    </td>
+    <td><input type="submit" name="button" id="button" value="Search"  class="btn btn-success" /></td>
+  </tr>
+</table>
+<table class="table table-bordered">
+  <tr>
+    <th>SL.NO</th>
+    <th>Date</th>
+    <th>From Time</th>
+    <th>To Time</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}&nbsp;</td>
+    <td>{{ i.fromtime }}&nbsp;</td>
+    <td>{{ i.totime }}&nbsp;</td>
+    <td><a href="/myapp/edit_shedule/{{ i.id }}" class="btn btn-info">Edit</a></td>
+    <td><a href="/myapp/delete_schedule/{{ i.id }}" class="btn btn-danger" onclick="return confirm('Are You Sure?')">Delete</a></td>
+      <td><a href="/myapp/view_appointment/{{ i.id }}" class="btn btn-primary">View Appointment</a></td>
+  </tr>
+    {% endfor %}
+</table>
+<p>&nbsp;</p>
+
+</form>
+</body>
+{% endblock %}

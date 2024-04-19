@@ -1,0 +1,26 @@
+{% extends 'doctors/doctor index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/edit_shedule_post/">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td>Date</td><input type="hidden" name="id" value="{{ data.id }}">
+      <td><input name="date" class="form-control" min="{{ dt }}" value="{{ data.date|date:'Y-m-d' }}" type="date" /></td>
+    </tr>
+      <tr>
+      <td>From Time</td>
+      <td><input name="time" value="{{ data.fromtime }}" type="time" class="form-control" required/></td>
+    </tr>
+      <tr>
+      <td>TO Time</td>
+      <td><input name="time2" value="{{ data.totime }}" type="time" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input class="btn btn-success" type="submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

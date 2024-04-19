@@ -1,0 +1,29 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+<body><form action="/myapp/disease_post/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<table class="table table-bordered table-striped">
+  <tr>
+    <td>Disease name</td>
+    <td><input type="text"class="form-control" pattern="[A-Z][a-z0-9. A-Z-]+" minlength="2" required name="textfield" id="textfield" /></td>
+  </tr>
+
+     <tr>
+    <td>Image</td>
+    <td><input type="file"class="form-control"  minlength="" required name="image" id="textfield" /></td>
+  </tr>
+
+
+  <tr>
+    <td>Details</td>
+    <td><textarea name="textarea"class="form-control" minlength="10" required id="textarea" cols="45" rows="5"></textarea></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="center"><input type="submit" name="button" id="button" value="ADD"class="btn btn-info" /></td>
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}

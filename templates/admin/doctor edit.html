@@ -1,0 +1,112 @@
+{% extends 'admin/admin index.html' %}
+{% block body %}
+
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/doctor_edit_post/" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+
+
+
+<table class="table table-bordered table-striped" >
+  <tr>
+    <td>Name</td>
+    <td>
+      <input type="text"class="form-control" value="{{ data.name }}" pattern="^[A-Za-z]+(?:\s[A-Za-z]+)?$"  required name="textfield2" id="textfield2" />
+   </td>
+  </tr>
+  <tr>
+    <td>Place</td>
+    <td>
+      <input  value="{{ data.place }}" type="text"class="form-control"required name="textfield" id="textfield" />
+   </td>
+  </tr>
+  <tr>
+    <td>Age</td>
+    <td>
+      <input type="text" class="form-control"required name="textfield3"   value="{{ data.age }}" id="textfield3" />
+   </td>
+  </tr>
+     <tr>
+    <td>Email</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield10" id="textfield3"  value="{{ data.email }}"  />
+      <input type="hidden" name="id" id=""  value="{{ data.id }}"  />
+   </td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="Male" id="RadioGroup1_0" {% if data.gender == 'Male' %} checked {% endif %} />
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Female" id="RadioGroup1_1" {% if data.gender == 'Female' %} checked {% endif %} />
+          Female</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Other" id="RadioGroup1_2"  {% if data.gender == 'Other' %} checked {% endif %}/>
+          Other</label>
+        <br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield4" pattern="[A-Za-z][A-Za-z. ]*"  value="{{ data.qualification }}" id="textfield4" />
+   </td>
+  </tr>
+  <tr>
+    <td>Pin</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield5" pattern="[1-9][0-9]+" minlength="5" maxlength="6" id="textfield5" value="{{ data.pin }}" />
+    </td>
+  </tr>
+  <tr>
+    <td>City</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield6" value="{{ data.city }}" id="textfield6" />
+   </td>
+  </tr>
+  <tr>
+    <td>House No.</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield7" value="{{ data.houseno }}" id="textfield7" />
+ </td>
+  </tr>
+  <tr>
+    <td>House name</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield8" value="{{ data.housename }}" id="textfield8" />
+    </td>
+  </tr>
+  <tr>
+    <td>Mobile No.</td>
+    <td>
+      <input type="text"class="form-control"required name="textfield9" pattern="[6-9][0-9]+" minlength="10" maxlength="10" value="{{ data.mobileno   }}" id="textfield9" />
+   </td>
+  </tr>
+  <tr>
+    <td height="39">Photo</td>
+    <td>
+      <input type="file"class="form-control"  name="fileField" id="fileField" />
+        <img src="{{ data.photo }}" width="200px" height="200px">
+   </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      
+        <div align="center">
+          <input type="submit" name="button" id="button" value="UPDATE"class="btn btn-info" />
+        </div>
+    </td>
+    
+  </tr>
+</table>
+</form>
+</body>
+{% endblock %}
+
